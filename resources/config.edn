@@ -1,0 +1,4 @@
+{:tasks/main-ns temporal
+ :nrepl/port 8123
+ :nrepl/args ["--port" #ref [:nrepl/port]
+              "--middleware" "[cider.nrepl/cider-middleware,refactor-nrepl.middleware/wrap-refactor]"]}

@@ -1,0 +1,26 @@
+{:paths ["src" "resources"]
+ :deps {io.github.manetu/temporal-sdk {:git/url "https://github.com/kpassapk/temporal-clojure-sdk" :git/sha "7306ce21c89f118bb6edbb7567a969a0465015b9"}
+        nrepl/nrepl                    {:mvn/version "1.2.0"}
+        cider/cider-nrepl              {:mvn/version "0.49.0"}
+        refactor-nrepl/refactor-nrepl  {:mvn/version "3.10.0"}
+        org.clojure/tools.logging      {:mvn/version "1.2.4"}
+        com.biffweb/config             {:git/url "https://github.com/jacobobryant/biff"
+                                        :git/tag "v0.7.25"
+                                        :git/sha "7e920b2"
+                                        :deps/root "libs/config"}
+
+
+        ;; Notes on logging: https://gist.github.com/jacobobryant/76b7a08a07d5ef2cc076b048d078f1f3
+        org.slf4j/slf4j-simple     {:mvn/version "2.0.0-alpha5"}
+        org.slf4j/log4j-over-slf4j {:mvn/version "1.7.36"}
+        org.slf4j/jul-to-slf4j     {:mvn/version "1.7.36"}
+        org.slf4j/jcl-over-slf4j   {:mvn/version "1.7.36"}}
+ :aliases 
+ {:dev {:extra-paths ["dev"]
+        :extra-deps {djblue/portal              {:mvn/version "0.57.2"}
+                     com.biffweb/task-runner
+                     {:git/url "https://github.com/jacobobryant/biff",
+                      :git/sha "146f2b1",
+                      :git/tag "v1.8.10",
+                      :deps/root "libs/task-runner"}}
+        :main-opts ["-m" "com.biffweb.task-runner" "tasks/tasks"]}}}

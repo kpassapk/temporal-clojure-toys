@@ -1,0 +1,12 @@
+{:app/host "0.0.0.0"
+ :app/port 8080
+
+ :temporal/target "unifica-test.yhk1w.tmprl.cloud:7233"
+ :temporal/namespace "unifica-test.yhk1w"
+ :temporal/cert-path "certs/client.pem"
+ :temporal/key-path "certs/client.key"
+
+ :tasks/main-ns temporal
+ :nrepl/port 8124
+ :nrepl/args ["--port" #ref [:nrepl/port]
+              "--middleware" "[cider.nrepl/cider-middleware,refactor-nrepl.middleware/wrap-refactor]"]}
