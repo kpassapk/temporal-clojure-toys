@@ -6,7 +6,6 @@
    [nrepl.cmdline :as nrepl-cmd]
    [com.biffweb.config :as config]
    [temporal.greeter]
-   [temporal.greeter-await]
    [temporal.parent-child]))
 
 (defn use-temporal [ctx]
