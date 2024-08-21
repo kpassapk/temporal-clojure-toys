@@ -1,7 +1,6 @@
 (ns repl
   (:require [temporal :as main]
             [temporal.greeter :as greeter]
-            [temporal.parent-child :as parent-child]
             [temporal.client.core :as c]
             [portal.api :as p])
   (:import (java.util UUID)))
@@ -13,9 +12,7 @@
   "Returns a context with a greeter workflow.
   Pass an an optional ID if you want this greeter to survive program restarts."
 
-  [{:keys [temporal/client] :as ctx} &
-
-   {:keys [id] :or {id (-> (UUID/randomUUID) str)}}]
+  [{:keys [temporal/client] :as ctx} & {:keys [id] :or {id (-> (UUID/randomUUID) str)}}]
 
   (let [wf (c/create-workflow client greeter/greeter-stateful-workflow {:task-queue ::main/queue
                                                                         :workflow-id id})

@@ -8,6 +8,9 @@
   [ctx {:keys [name] :as args}]
   (str "Hi, " name))
 
+(comment
+  (greet-activity nil {:name "Kyle"}))
+
 (defworkflow greeter-stateful-workflow
   [args]
   (let [max-greetings 3
@@ -15,7 +18,8 @@
 
     (s/register-signal-handler!
      (fn [signal-name {:keys [workflow-id] :as args}]
-       (when (= signal-name "greet")
+
+       (when (= (keyword signal-name) ::greet)
          (>! workflow-id ::greeting @(a/invoke greet-activity args))
 
          (tap> @state)
@@ -31,5 +35,5 @@
   [{:keys [greeter-workflow-id name]}]
   (let [signals (s/create-signal-chan)
         {:keys [workflow-id]} (w/get-info)]
-    (>! greeter-workflow-id "greet" {:workflow-id workflow-id :name name})
+    (>! greeter-workflow-id ::greet {:workflow-id workflow-id :name name})
     (<! signals ::greeting)))

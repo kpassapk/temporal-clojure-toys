@@ -5,8 +5,7 @@
    [temporal.client.worker :as twk]
    [nrepl.cmdline :as nrepl-cmd]
    [com.biffweb.config :as config]
-   [temporal.greeter]
-   [temporal.parent-child]))
+   [temporal.greeter]))
 
 (defn use-temporal [ctx]
  (let [client (tc/create-client)
